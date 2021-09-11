@@ -15,20 +15,22 @@ public class MoodAnalyser {
 	}
 
 	// method analysermood with passing parameter
-	public String analyserMood(String message) {
+	public String analyserMood() throws MoodAnalyserException {
 
 		// Handles Exceptions using try catch block
-		try {
-
-			if (message.contains("sad"))
-				return "Sad";
-			else
-				return "Happy";
-
-		} catch (Exception e) {
-
-			return "Happy";
-
-		}
+		try
+        {
+            if(message.length() == 0)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY,"Please enter valid message");
+            }
+            if (message.contains("sad"))
+                return "sad";
+            else
+                return "Happy";
+        } catch (NullPointerException e )
+        {
+            throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL,"Please enter valid message");
+        }
 	}
 }
