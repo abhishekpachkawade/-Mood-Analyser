@@ -16,10 +16,19 @@ public class MoodAnalyser {
 
 	// method analysermood with passing parameter
 	public String analyserMood(String message) {
-		if (message.contains("sad")) {
-			return "Sad";
-		} else {
+
+		// Handles Exceptions using try catch block
+		try {
+
+			if (message.contains("sad"))
+				return "Sad";
+			else
+				return "Happy";
+
+		} catch (Exception e) {
+
 			return "Happy";
+
 		}
 	}
 }
